@@ -2,31 +2,45 @@ import React, { useState } from "react";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const AddTechModal = () => {
-    const [name, setName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setlastName] = useState("");
 
     const onSubmit = () => {
-        if (name === "") {
+        if (firstName === "" || lastName === "") {
             return M.toast({ html: "Please enter your name" });
         }
-        console.log(name);
         //info - Clear fields
-        setName("");
+        setFirstName("");
+        setlastName("");
     };
 
     return (
         <div id='add-tech-modal' className='modal' style={modalStyle}>
             <div className='modal-content'>
-                <h4>New Technician</h4>
+                <h4 style={{marginBottom: '50px'}}>New Technician</h4>
                 <div className='row'>
                     <div className='input-field'>
                         <input
                             type='text'
-                            name='name'
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            name='firstName'
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
                         />
-                        <label htmlFor='name' className='active'>
-                            Enter Name
+                        <label htmlFor='firstName' className='active'>
+                            First Name
+                        </label>
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='input-field'>
+                        <input
+                            type='text'
+                            name='lastName'
+                            value={lastName}
+                            onChange={(e) => setlastName(e.target.value)}
+                        />
+                        <label htmlFor='lastName' className='active'>
+                            Last Name
                         </label>
                     </div>
                 </div>
