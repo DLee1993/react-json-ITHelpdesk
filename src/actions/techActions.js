@@ -58,6 +58,33 @@ export const addTech = (tech) => {
     };
 };
 
+//info - delete tech from server
+export const deleteTech = (id) => {
+    //info - redux-thunk allows you to return a function that allows us to dispatch to the reducer at any time
+    return async (dispatch) => {
+        try {
+            //info - sets loading to true in the state
+            setLoading();
+
+            //info - make a fetch request to logs to retrieve our data
+            await fetch(`/techs/${id}`, {
+                method: "DELETE",
+            });
+
+            //info - dispatch the type which is to get the logs and the payload is the data from the fetch request
+            dispatch({
+                type: DELETE_TECH,
+                payload: id,
+            });
+        } catch (error) {
+            dispatch({
+                type: TECHS_ERROR,
+                payload: error.response.data,
+            });
+        }
+    };
+};
+
 //info - Set loading to true
 export const setLoading = () => {
     return {
