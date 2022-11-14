@@ -13,7 +13,7 @@ const logReducerSwitch = (state = initialState, action) => {
             return {
                 ...state,
                 logs: action.payload,
-                loading: false,
+                loading: false
             };
         case SET_LOADING:
             return { ...state, loading: true };
