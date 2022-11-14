@@ -19,7 +19,7 @@ const LogItem = ({ log }) => {
                     <Moment format='MMMM Do YYYY, hh:mma'>{log.date}</Moment>
                 </span>
                 <a href='#!' className='secondary-content'>
-                    <i className="material-icons grey-text">delete</i>
+                    <i className='material-icons grey-text'>delete</i>
                 </a>
             </div>
         </li>

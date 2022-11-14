@@ -29,6 +29,7 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
 
 Logs.propTypes = {
     log: PropTypes.object.isRequired,
+    getLogs: PropTypes.func.isRequired
 };
 
 //info - connect is used to bring in anything from your app level state into a component
