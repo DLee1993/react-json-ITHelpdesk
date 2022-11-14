@@ -18,9 +18,9 @@ export const getLogs = () => {
             });
         } catch (error) {
             dispatch({
-                type: LOGS_ERROR, 
-                payload: error.response.data
-            })
+                type: LOGS_ERROR,
+                payload: error.response.data,
+            });
         }
     };
 };
