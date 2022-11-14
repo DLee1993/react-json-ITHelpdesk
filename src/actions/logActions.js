@@ -7,6 +7,7 @@ import {
     SET_CURRENT,
     CLEAR_CURRENT,
     UPDATE_LOG,
+    SEARCH_LOGS
 } from "./types";
 
 //info - get logs from server
@@ -114,6 +115,32 @@ export const updateLog = (log) => {
             //info - dispatch the type which is to get the logs and the payload is the data from the fetch request
             dispatch({
                 type: UPDATE_LOG,
+                payload: data,
+            });
+        } catch (error) {
+            dispatch({
+                type: LOGS_ERROR,
+                payload: error.response.data,
+            });
+        }
+    };
+};
+
+//info - Search for a log on the server
+export const searchLogs = (text) => {
+    //info - redux-thunk allows you to return a function that allows us to dispatch to the reducer at any time
+    return async (dispatch) => {
+        try {
+            //info - sets loading to true in the state
+            setLoading();
+
+            //info - make a fetch request to logs to retrieve our data
+            const res = await fetch(`/logs?q=${text}`);
+            const data = await res.json();
+
+            //info - dispatch the type which is to get the logs and the payload is the data from the fetch request
+            dispatch({
+                type: SEARCH_LOGS,
                 payload: data,
             });
         } catch (error) {
